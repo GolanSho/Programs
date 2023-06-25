@@ -20,22 +20,26 @@ def random_gen():
 
 def gen_numbers():
     num_gen = []
-    L = Listbox(top, selectmode=SINGLE, height=7, font=10)
-    L.place(relx=0.30, rely=0.3)
+
+    L1 = Listbox(top, selectmode=SINGLE, height=8, font=10, width=25)
+    L1.place(relx=0.30, rely=0.3)
+    # L2 = Listbox(top, selectmode=SINGLE, height=8, font=10, width=2)
+    # L2.place(relx=0.78, rely=0.3)
     for x in range(int(E1.get())):
         num_gen.clear()
         for i in range(6):
             to_add = random_gen()
             num_gen.append(to_add)
         num_gen = sorted(num_gen)
-        num_gen.append([random.randint(1, 8)])
+        extra_num = random.randint(1, 8)
 
-        L.insert(x, num_gen)
+        L1.insert(x, f"{num_gen}  [{extra_num}]")
+        # L2.insert(x, extra_num)
 
 B = Button(top, text="Generate", command=gen_numbers)
 B.place(relx=0.75, rely=0.1, height=27, width=70)
 
-top.wm_minsize(width=450, height=100)
+top.wm_minsize(width=450, height=250)
 top.wm_maxsize(width=450, height=250)
 
 top.mainloop()
